@@ -9,5 +9,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
     public abstract class Entity
     {
         public int ID { get; set; }
+        private DateTime Created {  get; set; }
+
     }
 }

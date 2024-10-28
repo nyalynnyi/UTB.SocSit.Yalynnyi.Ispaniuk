@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Pomelo.EntityFrameworkCore.MySql.Internal;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +13,13 @@ builder.Services.AddControllersWithViews();
 
 string connectionString = builder.Configuration.GetConnectionString("MySQL");
 ServerVersion serverVersion = new MySqlServerVersion("8.0.40");
-builder.Services.AddDbContext<SocSitDbContext>(options => options.UseMySql(connectionString, serverVersion));
+
+builder.Services.AddDbContext<SocSitDbContext>(options =>
+    options.UseMySql(connectionString, serverVersion,
+        mysqlOptions => mysqlOptions.MigrationsAssembly("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure")));
+
+
+
 
 var app = builder.Build();
 

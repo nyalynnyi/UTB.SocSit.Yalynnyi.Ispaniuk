@@ -17,10 +17,6 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database
         public DbSet<Post> Posts { get; set; }
         public DbSet<Up> Ups { get; set; }
         public DbSet<User> Users { get; set; }
-        //public SocSitDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
-        //{
-
-        //}
         public SocSitDbContext(DbContextOptions<SocSitDbContext> options): base(options)
         {
         }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
 {
+    [Table(nameof(Comment))]
     public class Comment : Entity
     {
         [ForeignKey(nameof(User))]

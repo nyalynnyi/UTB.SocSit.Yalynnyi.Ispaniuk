@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
+string connectionString = builder.Configuration.GetConnectionString("MySQL");
+ServerVersion serverVersion = new MySqlServerVersion("8.0.40");
+builder.Services.AddDbContext<SocSitDbContext>(options => options.UseMySql(connectionString, serverVersion));
 
 var app = builder.Build();
 

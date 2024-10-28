@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
 {
+    [Table(nameof(Down))]
     public class Down : Entity
     {
         [ForeignKey(nameof(User))]

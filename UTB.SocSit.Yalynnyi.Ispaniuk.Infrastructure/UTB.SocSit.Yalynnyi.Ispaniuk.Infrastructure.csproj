@@ -19,4 +19,8 @@
     <ProjectReference Include="..\UTB.SocSit.Yalynnyi.Ispaniuk.Domain\UTB.SocSit.Yalynnyi.Ispaniuk.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

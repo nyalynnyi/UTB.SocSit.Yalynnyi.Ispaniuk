@@ -11,7 +11,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
     public class Media : Entity
     {
         [ForeignKey(nameof(Post))]
-        public int PostID { get; set; }
+        public required int PostID { get; set; }
 
         public required string Link {  get; set; }
         public DateTime? Deleted { get; set; }

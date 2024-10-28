@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
+using static System.Net.Mime.MediaTypeNames;
 
 #nullable disable
 
@@ -31,6 +33,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("PostID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
@@ -38,11 +41,44 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int>("UserID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.ToTable("Comment");
+
+                    b.HasData(
+                        new
+                        {
+                            Text = "Hello there",
+                            UserID = 2,
+                            PostID = 1,
+                        },
+                        new
+                        {
+                            Text = "Cool",
+                            UserID = 4,
+                            PostID = 1,
+                        },
+                        new
+                        {
+                            Text = "New era of social comunication begins today",
+                            UserID = 5,
+                            PostID = 1,
+                        },
+                        new
+                        {
+                            Text = "Nice job, keep going",
+                            UserID = 4,
+                            PostID = 5,
+                        },
+                        new
+                        {
+                            Text = "Cool place",
+                            UserID = 5,
+                            PostID = 4,
+                        });
                 });
 
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Down", b =>
@@ -54,14 +90,23 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("PostID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("UserID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.ToTable("Down");
+
+                    b.HasData(
+                        new
+                        {
+                            PostID = 4,
+                            UserID = 3,
+                        });
                 });
 
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Follow", b =>
@@ -73,14 +118,68 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("FollowerID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("UserID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.ToTable("Follow");
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            FollowerID = 2,
+                        },
+                        new
+                        {
+                            UserID = 1,
+                            FollowerID = 2,
+                        },
+                        new
+                        {
+                            UserID = 1,
+                            FollowerID = 3,
+                        },
+                        new
+                        {
+                            UserID = 1,
+                            FollowerID = 4,
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            FollowerID = 1,
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            FollowerID = 4,
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            FollowerID = 5,
+                        },
+                        new
+                        {
+                            UserID = 4,
+                            FollowerID = 5,
+                        },
+                        new
+                        {
+                            UserID = 5,
+                            FollowerID = 4,
+                        },
+                        new
+                        {
+                            UserID = 3,
+                            FollowerID = 4,
+                        });
                 });
 
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Media", b =>
@@ -99,11 +198,34 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int>("PostID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.ToTable("Media");
+
+                    b.HasData(
+                        new
+                        {
+                            PostID = 4,
+                            Link = "/media/4_1.jpg"
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            Link = "/media/4_2.jpg"
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            Link = "/media/4_3.jpg"
+                        },
+                        new
+                        {
+                            PostID = 5,
+                            Link = "/media/5_1.mp4"
+                        });
                 });
 
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Post", b =>
@@ -122,11 +244,39 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int>("UserID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.ToTable("Post");
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            Text = "This is the first post on this network. Wow"
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            Text = "Hello world",
+                        },
+                        new
+                        {
+                            UserID = 4,
+                            Text = "Let's try something new. What about this?"
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            Text = "My the latest photos from NA"
+                        },
+                        new
+                        {
+                            UserID = 3,
+                            Text = "My first video from drone. What's your score?"
+                        });
                 });
 
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Up", b =>
@@ -138,14 +288,68 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("PostID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("UserID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.ToTable("Up");
+
+                    b.HasData(
+                        new
+                        {
+                            PostID = 1,
+                            UserID = 2,
+                        },
+                        new
+                        {
+                            PostID = 1,
+                            UserID = 4,
+                        },
+                        new
+                        {
+                            PostID = 2,
+                            UserID = 1,
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            UserID = 1,
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            UserID = 5,
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            UserID = 2,
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            UserID = 4,
+                        },
+                        new
+                        {
+                            PostID = 5,
+                            UserID = 4,
+                        },
+                        new
+                        {
+                            PostID = 5,
+                            UserID = 1,
+                        },
+                        new
+                        {
+                            PostID = 5,
+                            UserID = 2,
+                        });
                 });
 
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.User", b =>
@@ -190,6 +394,48 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Email = "orpha_terry@example.com",
+                            Nickname = "orpha_terry",
+                            Photo = "/img/user/default.jpg",
+                            Password = "EXAMPLE_pass_must_be_HASH",
+                            Name = "Orpha Terry"
+                        },
+                        new
+                        {
+                            Email = "marta.berge47@example.com",
+                            Nickname = "marta_berge",
+                            Photo = "/img/user/default.jpg",
+                            Password = "EXAMPLE_pass_must_be_HASH",
+                            Name = "Marta Berge"
+                        },
+                        new
+                        {
+                            Email = "jamir_kshlerin@example.com",
+                            Nickname = "j_kshlerin",
+                            Photo = "/img/user/default.jpg",
+                            Password = "EXAMPLE_pass_must_be_HASH",
+                            Name = "Jamir Kshlerin"
+                        },
+                        new
+                        {
+                            Email = "rico_spinka66@example.com",
+                            Nickname = "rico_spinka",
+                            Photo = "/img/user/default.jpg",
+                            Password = "EXAMPLE_pass_must_be_HASH",
+                            Name = "Rico Spinka"
+                        },
+                        new
+                        {
+                            Email = "ottilie.emmerich43@example.com",
+                            Nickname = "emmerich43",
+                            Photo = "/img/user/default.jpg",
+                            Password = "EXAMPLE_pass_must_be_HASH",
+                            Name = "Ottilie Emmerich"
+                        });
                 });
 #pragma warning restore 612, 618
         }

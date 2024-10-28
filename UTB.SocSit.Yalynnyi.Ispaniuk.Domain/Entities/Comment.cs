@@ -12,10 +12,10 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
     public class Comment : Entity
     {
         [ForeignKey(nameof(User))]
-        public int UserID { get; set; }
+        public required int UserID { get; set; }
 
         [ForeignKey(nameof(Post))]
-        public int PostID { get; set; }
+        public required int PostID { get; set; }
         public required string Text { get; set; }
         private DateTime? Deleted { get; set; }
     }

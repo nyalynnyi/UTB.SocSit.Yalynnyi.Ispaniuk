@@ -16,8 +16,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
         public string? Bio { get; set; }
         public required string Photo { get; set; }
         public required string Password { get; set; }
-        public required DateTime Updated { get; set; }
-        public required DateTime? Deleted { get; set; }
-        public required DateTime? Birthday { get; set; }
+        public DateTime? Updated { get; set; }
+        public DateTime? Deleted { get; set; }
+        public DateTime? Birthday { get; set; }
     }
 }

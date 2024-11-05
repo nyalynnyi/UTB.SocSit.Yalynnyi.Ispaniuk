@@ -9,6 +9,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             IList<User> users = new List<User>();
             users.Add(new User()
             {
+                ID = 1,
                 Email = "orpha_terry@example.com",
                 Nickname = "orpha_terry",
                 Photo = "/img/user/default.jpg",
@@ -16,7 +17,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
                 Name = "Orpha Terry"
             });
             users.Add(new User()
-            {
+            { 
+                ID = 2,
                 Email = "marta.berge47@example.com",
                 Nickname = "marta_berge",
                 Photo = "/img/user/default.jpg",
@@ -25,6 +27,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             });
             users.Add(new User()
             {
+                ID = 3,
                 Email = "jamir_kshlerin@example.com",
                 Nickname = "j_kshlerin",
                 Photo = "/img/user/default.jpg",
@@ -33,6 +36,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             });
             users.Add(new User()
             {
+                ID = 4,
                 Email = "rico_spinka66@example.com",
                 Nickname = "rico_spinka",
                 Photo = "/img/user/default.jpg",
@@ -41,6 +45,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             });
             users.Add(new User()
             {
+                ID = 5,
                 Email = "ottilie.emmerich43@example.com",
                 Nickname = "emmerich43",
                 Photo = "/img/user/default.jpg",

@@ -14,6 +14,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             IList<Down> downs = new List<Down>();
             downs.Add(new Down()
             {
+                ID = 1,
                 PostID = 4,
                 UserID = 3,
             });

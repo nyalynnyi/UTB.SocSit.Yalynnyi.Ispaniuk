@@ -14,21 +14,25 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             IList<Media> media = new List<Media>();
             media.Add(new Media()
             {
+                ID = 1,
                 PostID = 4,
                 Link = "/media/4_1.jpg"
             });
             media.Add(new Media()
             {
+                ID = 2,
                 PostID = 4,
                 Link = "/media/4_2.jpg"
             });
             media.Add(new Media()
             {
+                ID = 3,
                 PostID = 4,
                 Link = "/media/4_3.jpg"
             });
             media.Add(new Media()
             {
+                ID = 4,
                 PostID = 5,
                 Link = "/media/5_1.mp4"
             });

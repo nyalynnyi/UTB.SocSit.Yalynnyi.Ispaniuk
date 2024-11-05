@@ -19,4 +19,13 @@
     <ProjectReference Include="..\UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure\UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Security\Controllers\" />
+    <Folder Include="Areas\Security\Views\" />
+    <Folder Include="Areas\User\Controllers\" />
+    <Folder Include="Areas\User\Views\" />
+  </ItemGroup>
+
 </Project>

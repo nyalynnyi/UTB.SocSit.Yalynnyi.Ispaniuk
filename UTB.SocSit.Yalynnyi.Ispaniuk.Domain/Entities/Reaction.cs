@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
 {
-    [Table(nameof(Up))]
-    public class Up : Entity
+    [Table(nameof(Reaction))]
+    public class Reaction : Entity
     {
         [ForeignKey(nameof(User))]
         public required int UserID { get; set; }
 
         [ForeignKey(nameof(Post))]
         public required int PostID { get; set; }
+        public required bool Like { get; set; }
     }
 }

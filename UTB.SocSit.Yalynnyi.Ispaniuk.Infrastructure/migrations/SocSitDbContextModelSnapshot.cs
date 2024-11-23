@@ -82,33 +82,6 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Down", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int>("PostID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Down");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            PostID = 4,
-                            UserID = 3
-                        });
-                });
-
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Follow", b =>
                 {
                     b.Property<int>("ID")
@@ -294,13 +267,16 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Up", b =>
+            modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Reaction", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<bool>("Like")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("PostID")
                         .HasColumnType("int");
@@ -310,68 +286,85 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Up");
+                    b.ToTable("Reaction");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
+                            Like = true,
                             PostID = 1,
                             UserID = 2
                         },
                         new
                         {
                             ID = 2,
+                            Like = true,
                             PostID = 1,
                             UserID = 4
                         },
                         new
                         {
                             ID = 3,
+                            Like = true,
                             PostID = 2,
                             UserID = 1
                         },
                         new
                         {
                             ID = 4,
+                            Like = true,
                             PostID = 4,
                             UserID = 1
                         },
                         new
                         {
                             ID = 5,
+                            Like = true,
                             PostID = 4,
                             UserID = 5
                         },
                         new
                         {
                             ID = 6,
+                            Like = true,
                             PostID = 4,
                             UserID = 2
                         },
                         new
                         {
                             ID = 7,
+                            Like = true,
                             PostID = 4,
                             UserID = 4
                         },
                         new
                         {
                             ID = 8,
+                            Like = true,
                             PostID = 5,
                             UserID = 4
                         },
                         new
                         {
                             ID = 9,
+                            Like = true,
                             PostID = 5,
                             UserID = 1
                         },
                         new
                         {
                             ID = 10,
+                            Like = true,
                             PostID = 5,
                             UserID = 2
+                        },
+                        new
+                        {
+                            ID = 11,
+                            Like = false,
+                            PostID = 4,
+                            UserID = 3
                         });
                 });
 

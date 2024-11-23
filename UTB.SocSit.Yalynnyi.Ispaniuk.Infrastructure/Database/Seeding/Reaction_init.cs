@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,72 +8,91 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
 {
-    internal class Up_init
+    internal class Reaction_init
     {
-        public IList<Up> GetUps()
+        public IList<Reaction> GetReactions()
         {
-            IList<Up> ups = new List<Up>();
-            ups.Add(new Up()
+            IList<Reaction> reactions = new List<Reaction>();
+
+            reactions.Add(new Reaction()
             {
                 ID = 1,
                 PostID = 1,
                 UserID = 2,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 2,
                 PostID = 1,
                 UserID = 4,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 3,
                 PostID = 2,
                 UserID = 1,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID= 4,
                 PostID = 4,
                 UserID = 1,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 5,
                 PostID = 4,
                 UserID = 5,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 6,
                 PostID = 4,
                 UserID = 2,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 7,
                 PostID = 4,
                 UserID = 4,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 8,
                 PostID = 5,
                 UserID = 4,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 9,
                 PostID = 5,
                 UserID = 1,
+                Like = true
             });
-            ups.Add(new Up()
+            reactions.Add(new Reaction()
             {
                 ID = 10,
                 PostID = 5,
                 UserID = 2,
+                Like = true
             });
-            return ups;
+            reactions.Add(new Reaction()
+            {
+                ID = 11,
+                PostID = 4,
+                UserID = 3,
+                Like = false
+            });
+
+            return reactions;
         }
     }
 }

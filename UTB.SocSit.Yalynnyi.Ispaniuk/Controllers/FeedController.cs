@@ -4,11 +4,11 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Models;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
 {
-    public class HomeController : Controller
+    public class FeedController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<FeedController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public FeedController(ILogger<FeedController> logger)
         {
             _logger = logger;
         }

@@ -1,8 +1,159 @@
 ﻿@{
-    ViewData["Title"] = "Feed Page";
+    ViewData["Title"] = "Feed";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid">
+    <!-- Верхній рядок: логотип і заголовок -->
+    <div class="d-flex justify-content-between align-items-center bg-dark text-white py-2 px-4">
+        <div class="d-flex align-items-center">
+            <h1 class="m-0">Logo</h1>
+        </div>
+        <h2 class="m-0">Feed</h2>
+        <div>
+            <input type="text" class="form-control" placeholder="Search..." />
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Ліва панель меню -->
+        <div class="col-md-2 bg-light py-4">
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-house-door"></i> My profile</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-heart"></i> Followings</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-newspaper"></i> Feed</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-bookmark"></i> Saved posts</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-images"></i> My photos</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-camera-video"></i> My videos</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-plus-square"></i> New post</a>
+                </li>
+                <li class="nav-item mt-4">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-gear"></i> Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-dark"><i class="bi bi-box-arrow-right"></i> Log out</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Головна частина: Стрічка -->
+        <div class="col-md-6 py-4">
+            <!-- Пост 1 -->
+            <div class="card mb-4">
+                <!-- Post Header -->
+                <div class="card-header d-flex align-items-center">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture" />
+                    <div>
+                        <strong>Pablo Picasso</strong>
+                        <div class="text-muted">5h ago</div>
+                    </div>
+                </div>
+
+                <!-- Post Image -->
+                <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Post Image" />
+
+                <!-- Post Body -->
+                <div class="card-body">
+                    <p><strong>Pablo Picasso:</strong> I paint objects as I think them, not as I see them.</p>
+                    <p class="text-muted">View all 23 comments</p>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-primary" onclick="likePost()">👍 Like</button>
+                        <button class="btn btn-success" onclick="savePost()">💾 Save</button>
+                        <button class="btn btn-info" onclick="commentPost()">💬 Comment</button>
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div class="comment-section mt-3">
+                        <h6>Comments</h6>
+
+                        <!-- Input for comments -->
+                        <textarea id="commentInput" class="form-control mb-2" placeholder="Write your comment..."></textarea>
+                        <button class="btn btn-secondary" onclick="submitComment()">Submit Comment</button>
+
+                        <!-- List of comments -->
+                        <div id="commentsList" class="mt-3">
+                            <!-- Comments will be displayed here dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Пост 2 -->
+            <div class="card mb-4">
+                <!-- Post Header -->
+                <div class="card-header d-flex align-items-center">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture" />
+                    <div>
+                        <strong>Steve Jobs</strong>
+                        <div class="text-muted">1h ago</div>
+                    </div>
+                </div>
+
+                <!-- Post Image -->
+                <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Post Image" />
+
+                <!-- Post Body -->
+                <div class="card-body">
+                    <p>
+                        <strong>Steve Jobs:</strong> Design is not just what it looks like and feels like — design is how it works...
+                    </p>
+                    <p class="text-muted">View all 23 comments</p>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-primary" onclick="likePost()">👍 Like</button>
+                        <button class="btn btn-success" onclick="savePost()">💾 Save</button>
+                        <button class="btn btn-info" onclick="commentPost()">💬 Comment</button>
+                    </div>
+
+                    <!-- Comment Input Section (Hidden initially) -->
+                    <div id="commentInputContainer" class="d-none">
+                        <textarea id="commentInput" class="form-control mb-2" placeholder="Write a comment..."></textarea>
+                        <button class="btn btn-secondary" onclick="submitComment()">Post</button>
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div id="commentsList" class="mt-3">
+                        <!-- Comments will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Права панель: друзі -->
+        <div class="col-md-4 bg-light py-4">
+            <h5 class="mb-3">My friends</h5>
+            <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Friend" />
+                    Albert Einstein
+                </li>
+                <li class="d-flex align-items-center mb-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Friend" />
+                    Nikola Tesla
+                </li>
+                <li class="d-flex align-items-center mb-3">
+                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Friend" />
+                    Florence Nightingale
+                </li>
+                <!-- Додай інших друзів -->
+            </ul>
+        </div>
+    </div>
 </div>

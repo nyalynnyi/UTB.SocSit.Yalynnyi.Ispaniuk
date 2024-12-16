@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database
 {

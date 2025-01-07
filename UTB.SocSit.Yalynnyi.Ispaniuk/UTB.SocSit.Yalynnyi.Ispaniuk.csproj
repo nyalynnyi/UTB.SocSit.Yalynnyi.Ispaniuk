@@ -20,11 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Security\Controllers\" />
-    <Folder Include="Areas\Security\Views\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Views\Intro\Privacy.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

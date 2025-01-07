@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Pomelo.EntityFrameworkCore.MySql.Internal;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
@@ -25,6 +27,30 @@ builder.Services.AddDbContext<SocSitDbContext>(options =>
 builder.Services.AddIdentity< UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User, Role>()
      .AddEntityFrameworkStores<SocSitDbContext>()
      .AddDefaultTokenProviders();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 1;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 1;
+    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.MaxFailedAccessAttempts = 10;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+    options.User.RequireUniqueEmail = true;
+});
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    options.LoginPath = "/Security/Account/Login";
+    options.LogoutPath = "/Security/Account/Logout";
+    options.SlidingExpiration = true;
+});
+
+builder.Services.AddScoped<IAccountService, AccountIdentityService>();
 
 var app = builder.Build();
 

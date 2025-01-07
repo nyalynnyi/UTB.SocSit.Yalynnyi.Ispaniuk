@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 {
     [DbContext(typeof(SocSitDbContext))]
-    partial class SocSitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241218191559_alter_all_created_datetime")]
+    partial class alter_all_created_datetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,7 +148,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Comment", (string)null);
+                    b.ToTable("Comment");
 
                     b.HasData(
                         new
@@ -201,7 +204,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Follow", (string)null);
+                    b.ToTable("Follow");
 
                     b.HasData(
                         new
@@ -286,7 +289,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Media", (string)null);
+                    b.ToTable("Media");
 
                     b.HasData(
                         new
@@ -335,7 +338,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Post", (string)null);
+                    b.ToTable("Post");
 
                     b.HasData(
                         new
@@ -389,7 +392,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Reaction", (string)null);
+                    b.ToTable("Reaction");
 
                     b.HasData(
                         new

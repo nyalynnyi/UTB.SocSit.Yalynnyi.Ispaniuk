@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database
 {
-    public class SocSitDbContext : DbContext
+    public class SocSitDbContext : IdentityDbContext<Identity.User, Role, int>
     {
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Follow> Follows { get; set; }
         public DbSet<Media> Media { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Identity.User> Users { get; set; }
         public SocSitDbContext(DbContextOptions<SocSitDbContext> options): base(options)
         {
         }
@@ -33,7 +33,9 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database
             Reaction_init reaction = new Reaction_init();
             modelBuilder.Entity<Reaction>().HasData(reaction.GetReactions());
             User_init user = new User_init();
-            modelBuilder.Entity<User>().HasData(user.GetUsers());
+            modelBuilder.Entity<Identity.User>().HasData(user.GetUsers());
+            Role_init role = new Role_init();
+            modelBuilder.Entity<Role>().HasData(role.GetRoles());
         }
     }
 }

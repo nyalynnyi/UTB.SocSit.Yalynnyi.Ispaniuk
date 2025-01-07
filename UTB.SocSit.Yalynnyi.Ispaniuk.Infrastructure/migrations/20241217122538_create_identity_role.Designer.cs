@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 {
     [DbContext(typeof(SocSitDbContext))]
-    partial class SocSitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241217122538_create_identity_role")]
+    partial class create_identity_role
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,7 +148,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Comment", (string)null);
+                    b.ToTable("Comment");
 
                     b.HasData(
                         new
@@ -201,7 +204,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Follow", (string)null);
+                    b.ToTable("Follow");
 
                     b.HasData(
                         new
@@ -286,7 +289,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Media", (string)null);
+                    b.ToTable("Media");
 
                     b.HasData(
                         new
@@ -335,7 +338,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Post", (string)null);
+                    b.ToTable("Post");
 
                     b.HasData(
                         new
@@ -389,7 +392,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Reaction", (string)null);
+                    b.ToTable("Reaction");
 
                     b.HasData(
                         new
@@ -612,7 +615,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "349e0500-1c6d-4f71-b2d8-4034bf057056",
+                            ConcurrencyStamp = "ccaf9b71-914c-4b9c-b859-af78c52355a9",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "orpha_terry@example.com",
                             EmailConfirmed = false,
@@ -627,7 +630,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d2fd95e1-6e59-4042-ad28-de392b6f9f3c",
+                            ConcurrencyStamp = "0d01b5ac-1e19-43f4-8fb6-8b28cca190f0",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "marta.berge47@example.com",
                             EmailConfirmed = false,
@@ -642,7 +645,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c03f5db-0d57-440f-904a-d9e5663d4faa",
+                            ConcurrencyStamp = "70699d15-9dc0-4756-a217-e2700b4c165b",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "jamir_kshlerin@example.com",
                             EmailConfirmed = false,
@@ -657,7 +660,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f5d3fb35-17d6-496d-8fa2-c8db3a528f7d",
+                            ConcurrencyStamp = "206a3d1d-bc51-4391-bfa2-a00e41d35272",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "rico_spinka66@example.com",
                             EmailConfirmed = false,
@@ -672,7 +675,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "474ffdfa-e64f-4f21-aa03-440acb870cfc",
+                            ConcurrencyStamp = "681b2336-75f0-42fc-8dc8-e3910f3fec88",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ottilie.emmerich43@example.com",
                             EmailConfirmed = false,

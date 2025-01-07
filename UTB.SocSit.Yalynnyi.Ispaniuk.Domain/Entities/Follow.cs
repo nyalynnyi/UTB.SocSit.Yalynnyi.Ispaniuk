@@ -15,5 +15,6 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
 
         [ForeignKey(nameof(User))]
         public required int FollowerID { get; set; }
+        private DateTime Created { get; set; }
     }
 }

@@ -26,7 +26,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     UserID = table.Column<int>(type: "int", nullable: false),
                     PostID = table.Column<int>(type: "int", nullable: false),
                     Text = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,7 +42,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserID = table.Column<int>(type: "int", nullable: false),
-                    FollowerID = table.Column<int>(type: "int", nullable: false)
+                    FollowerID = table.Column<int>(type: "int", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,6 +60,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     PostID = table.Column<int>(type: "int", nullable: false),
                     Link = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Deleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
@@ -75,6 +78,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                     UserID = table.Column<int>(type: "int", nullable: false),
                     Text = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Deleted = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
@@ -91,7 +95,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserID = table.Column<int>(type: "int", nullable: false),
                     PostID = table.Column<int>(type: "int", nullable: false),
-                    Like = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    Like = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {

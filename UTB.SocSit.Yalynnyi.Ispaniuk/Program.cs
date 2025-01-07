@@ -22,7 +22,7 @@ builder.Services.AddDbContext<SocSitDbContext>(options =>
         mysqlOptions => mysqlOptions.MigrationsAssembly("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure")));
 
 // Configuration for Identity
-builder.Services.AddIdentity<User, Role>()
+builder.Services.AddIdentity< UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User, Role>()
      .AddEntityFrameworkStores<SocSitDbContext>()
      .AddDefaultTokenProviders();
 

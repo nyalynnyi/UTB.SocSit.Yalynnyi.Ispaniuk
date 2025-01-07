@@ -14,6 +14,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
         public required int PostID { get; set; }
 
         public required string Link {  get; set; }
+        private DateTime Created { get; set; }
         public DateTime? Deleted { get; set; }
     }
 }

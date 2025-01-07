@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 {
     [DbContext(typeof(SocSitDbContext))]
-    partial class SocSitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241217112918_alter_indentity_user")]
+    partial class alter_indentity_user
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,109 +24,6 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserLogins", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("AspNetUserTokens", (string)null);
-                });
 
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Comment", b =>
                 {
@@ -145,7 +45,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Comment", (string)null);
+                    b.ToTable("Comment");
 
                     b.HasData(
                         new
@@ -201,7 +101,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Follow", (string)null);
+                    b.ToTable("Follow");
 
                     b.HasData(
                         new
@@ -286,7 +186,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Media", (string)null);
+                    b.ToTable("Media");
 
                     b.HasData(
                         new
@@ -335,7 +235,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Post", (string)null);
+                    b.ToTable("Post");
 
                     b.HasData(
                         new
@@ -389,7 +289,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Reaction", (string)null);
+                    b.ToTable("Reaction");
 
                     b.HasData(
                         new
@@ -471,52 +371,6 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
-
-                    b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Moderator"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "User"
-                        });
-                });
-
             modelBuilder.Entity("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User", b =>
                 {
                     b.Property<int>("Id")
@@ -535,7 +389,6 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("Created")
@@ -545,8 +398,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
@@ -564,12 +416,10 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("longtext");
@@ -593,26 +443,18 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
-
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "349e0500-1c6d-4f71-b2d8-4034bf057056",
+                            ConcurrencyStamp = "26aba3e9-86ba-492a-a525-da131a46f8cf",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "orpha_terry@example.com",
                             EmailConfirmed = false,
@@ -627,7 +469,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d2fd95e1-6e59-4042-ad28-de392b6f9f3c",
+                            ConcurrencyStamp = "5f84c7c5-cfd4-482f-b25f-85c3bc991069",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "marta.berge47@example.com",
                             EmailConfirmed = false,
@@ -642,7 +484,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c03f5db-0d57-440f-904a-d9e5663d4faa",
+                            ConcurrencyStamp = "a8dfc092-d16b-40a8-88c4-2799e2dcc0a1",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "jamir_kshlerin@example.com",
                             EmailConfirmed = false,
@@ -657,7 +499,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f5d3fb35-17d6-496d-8fa2-c8db3a528f7d",
+                            ConcurrencyStamp = "c1a31b25-4ac9-4bad-8054-a00871222cf4",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "rico_spinka66@example.com",
                             EmailConfirmed = false,
@@ -672,7 +514,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "474ffdfa-e64f-4f21-aa03-440acb870cfc",
+                            ConcurrencyStamp = "cc67af2d-cb55-41e8-a371-6c93892c3595",
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ottilie.emmerich43@example.com",
                             EmailConfirmed = false,
@@ -683,57 +525,6 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
                             Photo = "/img/user/default.jpg",
                             TwoFactorEnabled = false
                         });
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
-                {
-                    b.HasOne("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Role", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
-                {
-                    b.HasOne("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
-                {
-                    b.HasOne("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
-                {
-                    b.HasOne("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Role", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
-                {
-                    b.HasOne("UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

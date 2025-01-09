@@ -5,6 +5,7 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
+
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database
 {
     public class SocSitDbContext : IdentityDbContext<Identity.User, Role, int>
@@ -37,5 +38,9 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database
             Role_init role = new Role_init();
             modelBuilder.Entity<Role>().HasData(role.GetRoles());
         }
+        
+        
     }
+    
+    
 }

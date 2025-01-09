@@ -76,6 +76,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Intro}/{action=Index}/{id?}");
+    pattern: "{controller=Feed}/{action=Index}/{id?}");
+
 
 app.Run();

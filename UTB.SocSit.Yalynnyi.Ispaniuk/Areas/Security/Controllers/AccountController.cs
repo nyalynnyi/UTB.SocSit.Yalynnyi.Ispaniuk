@@ -42,6 +42,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Security.Controllers
                 else
                 {
                     //errors to logger
+                    Console.WriteLine("registration error:");
+                    Console.WriteLine(string.Join(", ", errors));
                 }
             }
             return View(registerVM);

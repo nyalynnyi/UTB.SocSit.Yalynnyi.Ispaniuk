@@ -3,12 +3,11 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Interfaces;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity
 {
-    public class User : IdentityUser<int>, IUser<int> 
+    public class User : IdentityUser<int>, IUser<int>
     {
-        public virtual string? Email { get; set; }
+        public override string? Email { get; set; }
         public virtual string? Nickname { get; set; }
         public virtual string? Name { get; set; }
-        
         public virtual string? Bio { get; set; }
         public string? Photo { get; set; }
         public DateTime? Updated { get; set; }

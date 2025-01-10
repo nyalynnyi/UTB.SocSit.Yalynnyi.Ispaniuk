@@ -30,7 +30,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
                 UserName = vm.Username,
                 Name = vm.Name,
                 Email = vm.Email,
-                PhoneNumber = vm.Phone
+                PhoneNumber = vm.Phone,
+                Created = DateTime.Now
             };
             string[] errors = null;
             var result = await userManager.CreateAsync(user, vm.Password);

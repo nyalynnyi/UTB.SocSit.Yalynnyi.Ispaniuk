@@ -80,9 +80,12 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{area=Security}/{controller=Account}/{action=Login}/{id?}");
 
-
 app.MapControllerRoute(
     name: "feed",
     pattern: "{controller=Feed}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "profile",
+    pattern: "{controller=Profile}/{action=Index}/{id?}");
 
 app.Run();

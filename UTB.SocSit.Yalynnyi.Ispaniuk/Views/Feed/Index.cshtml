@@ -6,10 +6,9 @@ ViewData["Title"] = "Feed";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
-
-<div class="container-fluid">
-    <!-- Верхній рядок: логотип і заголовок -->
-    <div class="d-flex justify-content-between align-items-center bg-dark text-white py-2 px-4">
+<!-- Верхній рядок, що займає всю ширину екрану -->
+<div class="w-100 bg-dark text-white py-2 px-4">
+    <div class="d-flex justify-content-between align-items-center w-100">
         <!-- Логотип-кнопка -->
         <a href="#" class="d-inline-block">
             <img src="~/img/network.png" alt="Logo" class="logo-btn" />
@@ -23,15 +22,18 @@ ViewData["Title"] = "Feed";
         <!-- Поле пошуку з обмеженою шириною -->
         <input type="text" class="form-control search-input" placeholder="Search..." />
     </div>
+</div>
 
 
-
+<div class="container-fluid">
     <div class="row">
         <!-- Ліва панель меню -->
         <div class="col-md-2 bg-light py-4">
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-dark"><i class="bi bi-house-door"></i> My profile</a>
+                    <a asp-controller="Profile" asp-action="Index" class="nav-link text-dark">
+                        <i class="bi bi-house-door"></i> My profile
+                    </a>
                 </li>
                 <li class="nav-item mb-2">
                     <a href="#" class="nav-link text-dark"><i class="bi bi-heart"></i> Followings</a>
@@ -93,13 +95,10 @@ ViewData["Title"] = "Feed";
                     </button>
                 </div>
 
-
                 <!-- Post Body -->
                 <div class="card-body">
                     <p><strong>Pablo Picasso:</strong> I paint objects as I think them, not as I see them.</p>
                     <p class="text-muted">View all 23 comments</p>
-
-
 
                     <!-- Comment Section -->
                     <div class="comment-section mt-3">
@@ -117,7 +116,6 @@ ViewData["Title"] = "Feed";
                 </div>
             </div>
 
-
             <!-- Пост 2 -->
             <div class="card mb-4">
                 <div class="card-header d-flex align-items-center">
@@ -130,7 +128,6 @@ ViewData["Title"] = "Feed";
 
                 <!-- Фото -->
                 <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="Post Image" />
-
 
                 <!-- Кнопки -->
                 <div class="d-flex justify-content-between align-items-center mt-2">
@@ -153,6 +150,7 @@ ViewData["Title"] = "Feed";
                 <p>
                     <strong>Steve Jobs:</strong> Design is not just what it looks like and feels like — design is how it works...
                 </p>
+
                 <!-- Коментарі -->
                 <div class="comment-section mt-3">
                     <h6>Comments</h6>
@@ -167,9 +165,6 @@ ViewData["Title"] = "Feed";
                     </div>
                 </div>
             </div>
-
-
-
         </div>
 
         <!-- Права панель: друзі -->

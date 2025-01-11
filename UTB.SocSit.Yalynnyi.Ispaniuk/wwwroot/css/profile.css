@@ -1,0 +1,94 @@
+/* Загальні стилі для картки */
+.card {
+    border: 2px solid #007BFF; /* Синя рамка */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь */
+}
+
+/* Заголовок картки */
+.card-header {
+    background-color: #f0f8ff; /* Світло-блакитний фон */
+    color: #000000; /* Синій текст */
+    font-size: 1.2rem;
+    border-bottom: 2px solid #007BFF;
+}
+
+/* Стилі для кнопок */
+.btn-light {
+    background-color: #f8f9fa;
+    color: #007BFF;
+    border: 1px solid #007BFF;
+}
+
+.btn-light:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+/* Стилі для зображень */
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    filter: brightness(0.9); /* Зменшення яскравості */
+}
+
+/* Стилі для коментарів */
+.comment-section h6 {
+    color: #090a0b;
+    font-weight: bold;
+}
+
+textarea {
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+}
+
+button.btn-secondary {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+}
+
+button.btn-secondary:hover {
+    background-color: #0056b3;
+}
+
+/* Текст коментарів */
+.text-muted {
+    color: #6c757d !important;
+    font-style: italic;
+}
+
+.card-body {
+    padding-bottom: 20px; /* Додатковий відступ знизу */
+}
+
+/* Обмежуємо розмір логотипу */
+.logo-btn {
+    width: 40px; /* Приблизно 40x40 пікселів для логотипу */
+    height: 40px;
+    object-fit: cover; /* Зберігає пропорції */
+    border-radius: 50%; /* Закруглені кути */
+}
+
+/* Стилі для поля пошуку, щоб не розтягувалось на всю ширину */
+.search-input {
+    max-width: 300px; /* Обмежуємо максимальну ширину */
+    width: 100%; /* Залишаємо можливість заповнення в межах 300px */
+}
+
+/* Стилі для Feed */
+a.text-white h2 {
+    font-size: 1.5rem; /* Розмір шрифта */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a.text-white h2:hover {
+    color: #ffcc00; /* Колір при наведенні */
+}
+
+/* Додаткові стилі для вирівнювання */
+
+
+

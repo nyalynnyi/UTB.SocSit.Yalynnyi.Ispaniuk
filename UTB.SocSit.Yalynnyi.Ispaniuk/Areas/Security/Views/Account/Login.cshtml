@@ -1,52 +1,51 @@
 @model UTB.SocSit.Yalynnyi.Ispaniuk.Application.ViewModels.LoginViewModel
 @{
-ViewData["Title"] = "Login";
+    ViewData["Title"] = "Login";
 }
 @section Styles
 {
-<link rel="stylesheet" href="~/css/login.css" />
+    <link rel="stylesheet" href="~/css/login.css" />
 }
 
 <div class="row d-flex justify-content-center align-items-center" style="min-height: 70vh;">
-     
-    
+
     <!-- Заголовок -->
-        <div class="text-center">
-            <h1 style="margin-top: 0;">Login with Social Networks or Manually</h1>
-        </div>
+    <div class="text-center">
+        <h1 style="margin-top: 0;">Login with Social Networks or Manually</h1>
+    </div>
 
-        <!-- Social login buttons (left) -->
-        <div class="col-12 col-md-5 d-flex flex-column align-items-center">
-            <div class="social-login w-100">
-                <button class="btn facebook-btn social-btn w-100 mb-3" type="button">
-                    <span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span>
-                </button>
-                <button class="btn google-btn social-btn w-100 mb-3" type="button">
-                    <span><i class="fab fa-google-plus-g"></i> Sign in with Google</span>
-                </button>
-                <button class="btn twitter-btn social-btn w-100" type="button">
-                    <span><i class="fa-brands fa-twitter"></i> Sign in with Twitter</span>
-                </button>
-            </div>
+    <!-- Social login buttons (left) -->
+    <div class="col-12 col-md-5 d-flex flex-column align-items-center">
+        <div class="social-login w-100">
+            <button class="btn facebook-btn social-btn w-100 mb-3" type="button">
+                <span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span>
+            </button>
+            <button class="btn google-btn social-btn w-100 mb-3" type="button">
+                <span><i class="fab fa-google-plus-g"></i> Sign in with Google</span>
+            </button>
+            <button class="btn twitter-btn social-btn w-100" type="button">
+                <span><i class="fa-brands fa-twitter"></i> Sign in with Twitter</span>
+            </button>
         </div>
+    </div>
 
-        <!-- OR divider -->
-        <div class="col-12 col-md-1 text-center">
-            <div class="or-divider">
-                <p class="or-text">OR</p>
-            </div>
+    <!-- OR divider -->
+    <div class="col-12 col-md-1 text-center">
+        <div class="or-divider">
+            <p class="or-text">OR</p>
         </div>
-    
-        <!-- Manual login form (right) -->
-        <div class="col-12 col-md-5 d-flex flex-column align-items-center">
-            <div class="login-form w-100">
-                @{
-                    if (Model?.LoginFailed == true)
-                    {
-                        <div class="text-danger">Login Failed!</div>
-                    }
+    </div>
+
+    <!-- Manual login form (right) -->
+    <div class="col-12 col-md-5 d-flex flex-column align-items-center">
+        <div class="login-form w-100">
+            @{
+                if (Model?.LoginFailed == true)
+                {
+                    <div class="text-danger">Login Failed!</div>
                 }
-                <form asp-action="Login" method="post" class="form-signin">
+            }
+            <form asp-action="Login" method="post" class="form-signin">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <input asp-for="Username" type="text" id="inputUsername" class="form-control" placeholder="Username" autofocus="">
                 <span asp-validation-for="Username" class="text-danger"></span>
@@ -55,17 +54,17 @@ ViewData["Title"] = "Login";
                 <div class="text-center">
                     <button class="btn btn-success w-100" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
                 </div>
-                </form>
-                <hr>
-                <a asp-action="Register" class="btn btn-primary w-100 text-white" type="button" id="btn-signup">
-                    <i class="fas fa-user-plus"></i> Sign up New Account
-                </a>
-            </div>
+            </form>
+            <hr>
+            <a asp-action="Register" class="btn btn-primary w-100 text-white" type="button" id="btn-signup">
+                <i class="fas fa-user-plus"></i> Sign up New Account
+            </a>
         </div>
+    </div>
 </div>
 
 
 @section Scripts
 {
-<partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
 }

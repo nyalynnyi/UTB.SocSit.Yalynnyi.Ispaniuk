@@ -16,6 +16,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
         }
         public async Task<bool> Login(LoginViewModel vm)
         {
+            Console.WriteLine("Login in service...");
             var result = await sigInManager.PasswordSignInAsync(vm.Username, vm.Password, true, true);
             return result.Succeeded;
         }

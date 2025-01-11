@@ -28,10 +28,15 @@ ViewData["Title"] = "Register";
         <span asp-validation-for="Name" class="text-danger"></span>
         <input asp-for="Email" type="email" id="user-email" class="form-control" placeholder="Email address" autofocus="">
         <span asp-validation-for="Email" class="text-danger"></span>
-        <input asp-for="Phone" type="tel" id="user-phone" class="form-control" placeholder="Phone" autofocus="">
+        @* <input asp-for="Phone" type="tel" id="user-phone" class="form-control" placeholder="Phone" autofocus=""> *@
+           <input asp-for="Phone" type="tel" id="user-phone" class="form-control" placeholder="Phone" autofocus="" data-val="true" 
+           data-val-phoneNumber="Invalid phone number format. Use '+' followed by 6 to 20 digits.">
+
         <span asp-validation-for="Phone" class="text-danger"></span>
         <br />
-        <input asp-for="Password" type="password" id="user-pass" class="form-control" placeholder="Password" autofocus="">
+        <input asp-for="Password" type="password" id="user-pass" class="form-control" placeholder="Password" autofocus="" data-val="true" 
+        data-val-password="Invalid password. Use Invalid phone number format. Use Invalid phone number format. Use at least 8 characters including digits and letters.">
+
         <span asp-validation-for="Password" class="text-danger"></span>
         <input asp-for="RepeatedPassword" type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" autofocus="">
         <span asp-validation-for="RepeatedPassword" class="text-danger"></span>
@@ -45,6 +50,7 @@ ViewData["Title"] = "Register";
 </div>
 @section Scripts
 {
-<partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
+    @* <script src="~/js/jquery.validation.phone_number.js"></script> *@
 }
  

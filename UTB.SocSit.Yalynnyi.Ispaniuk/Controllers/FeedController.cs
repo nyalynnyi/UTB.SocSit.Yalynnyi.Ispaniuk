@@ -4,6 +4,7 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Models;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
 {
+    [Route("Feed")]
     public class FeedController : Controller
     {
         private readonly ILogger<FeedController> _logger;
@@ -13,6 +14,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
             _logger = logger;
         }
 
+        [Route("Index")]
         public IActionResult Index()
         {
             return View();

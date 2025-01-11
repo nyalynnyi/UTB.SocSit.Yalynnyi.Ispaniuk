@@ -78,4 +78,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Intro}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "feed",
+    pattern: "{controller=Feed}/{action=Index}/{id?}");
+
 app.Run();

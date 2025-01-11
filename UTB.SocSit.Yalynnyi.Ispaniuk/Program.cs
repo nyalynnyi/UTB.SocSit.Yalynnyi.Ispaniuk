@@ -76,7 +76,8 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Intro}/{action=Index}/{id?}");
+    pattern: "{area=Security}/{controller=Account}/{action=Login}/{id?}");
+
 
 app.MapControllerRoute(
     name: "feed",

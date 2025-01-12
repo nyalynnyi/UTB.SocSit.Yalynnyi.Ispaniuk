@@ -6,7 +6,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity
     public class User : IdentityUser<int>, IUser<int>
     {
         public override string? Email { get; set; }
-        public virtual string? Nickname { get; set; }
+        public override string? UserName { get; set; }
         public virtual string? Name { get; set; }
         public virtual string? Bio { get; set; }
         public string? Photo { get; set; }

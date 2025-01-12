@@ -11,7 +11,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             {
                 Id = 1,
                 Email = "orpha_terry@example.com",
-                Nickname = "orpha_terry",
+                UserName = "orpha_terry",
                 Photo = "/img/user/default.jpg",
                 Name = "Orpha Terry"
             });
@@ -19,7 +19,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             { 
                 Id = 2,
                 Email = "marta.berge47@example.com",
-                Nickname = "marta_berge",
+                UserName = "marta_berge",
                 Photo = "/img/user/default.jpg",
                 Name = "Marta Berge"
             });
@@ -27,7 +27,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             {
                 Id = 3,
                 Email = "jamir_kshlerin@example.com",
-                Nickname = "j_kshlerin",
+                UserName = "j_kshlerin",
                 Photo = "/img/user/default.jpg",
                 Name = "Jamir Kshlerin"
             });
@@ -35,7 +35,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             {
                 Id = 4,
                 Email = "rico_spinka66@example.com",
-                Nickname = "rico_spinka",
+                UserName = "rico_spinka",
                 Photo = "/img/user/default.jpg",
                 Name = "Rico Spinka"
             });
@@ -43,7 +43,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
             {
                 Id = 5,
                 Email = "ottilie.emmerich43@example.com",
-                Nickname = "emmerich43",
+                UserName = "emmerich43",
                 Photo = "/img/user/default.jpg",
                 Name = "Ottilie Emmerich"
             });

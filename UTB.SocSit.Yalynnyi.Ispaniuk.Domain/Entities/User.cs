@@ -12,7 +12,9 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
     public class User : Entity
     {
         public required string Email { get; set; }
-        public required string Nickname { get; set; }
+        [UsernameChars]
+        public required string UserName { get; set; }
+        [NameChars]
         public string? Name { get; set; }
         public string? Bio { get; set; }
         public required string Photo { get; set; }

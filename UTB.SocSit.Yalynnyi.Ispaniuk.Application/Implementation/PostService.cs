@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Application.ViewModels;
+﻿using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 

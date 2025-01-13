@@ -13,18 +13,16 @@
                 <thead>
                     <tr>
                         <th class="col-sm-1">ID</th>
-                        <th class="col-sm-3">Text</th>
-                        <th class="col-sm-3">User ID</th>
-                        <th class="col-sm-1">Deleted</th>
+                        <th class="col-sm-9">Text</th>
+                        <th class="col-sm-1">User ID</th>
                         <th class="col-sm-1">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                         <tr>
                             <td class="col-sm-1">@item.ID</td>
-                            <td class="col-sm-3">@item.Text</td>
-                            <td class="col-sm-3">@item.UserID.ToString()</td>
-                            <td class="col-sm-1">@item.Deleted</td>
+                            <td class="col-sm-9">@item.Text</td>
+                            <td class="col-sm-1">@item.UserID.ToString()</td>
                             <td class="col-sm-1">
                                 <form method="post" asp-action="Delete" asp-route-id="@item.ID" onsubmit="return confirm('Are you sure you want to delete this post?');">
                                     <button type="submit" class="btn btn-danger">Delete</button>

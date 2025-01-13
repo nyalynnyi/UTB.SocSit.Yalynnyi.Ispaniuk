@@ -53,6 +53,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddScoped<IAccountService, AccountIdentityService>();
 builder.Services.AddScoped<ISecurityService, SecurityIdentityService>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
@@ -76,10 +78,14 @@ app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=User}/{action=Index}/{id?}");
 
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Security}/{controller=Account}/{action=Login}/{id?}");
+
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "Admin/{controller=Post}/{action=Index}/{id?}",
+    defaults: new { area = "Admin" });
 
 app.MapControllerRoute(
     name: "feed",

@@ -3,6 +3,8 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
 using System.Security.Authentication.ExtendedProtection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
 {
@@ -12,10 +14,10 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
         private readonly SecurityIdentityService _securityService;
 
         public IList<User> SelectAll()
-        {            
-            return _SocSitDbContext.Users.ToList();
+        {
+            
+            return _SocSitDbContext.Users.ToList(); ;
         }
-
 
         public bool Delete(int id)
         {
@@ -24,6 +26,9 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
                 User userToDelete = _SocSitDbContext.Users.Find(id);
                 if (userToDelete != null)
                 {
+                    var posts = _SocSitDbContext.Posts.Where(p => p.UserID == id).ToList();
+                    _SocSitDbContext.Posts.RemoveRange(posts);
+                    _SocSitDbContext.SaveChangesAsync();
                     _SocSitDbContext.Remove(userToDelete);
                     _SocSitDbContext.SaveChanges();
                     Console.WriteLine($"User with ID {id} deleted successfully");

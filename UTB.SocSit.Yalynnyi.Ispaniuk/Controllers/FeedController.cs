@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Enums;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Models;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
@@ -17,7 +19,24 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                bool admin;
+
+                if (User.IsInRole(nameof(Roles.Admin)))
+                {
+                    admin = true;
+                    ViewBag.admin = admin;
+                    return View(admin);
+                }
+                else
+                {
+                    admin = false;
+                    ViewBag.admin = admin;
+                    return View(false);
+                }
+            }
+            else return Redirect("/");
         }
 
         public IActionResult Privacy()

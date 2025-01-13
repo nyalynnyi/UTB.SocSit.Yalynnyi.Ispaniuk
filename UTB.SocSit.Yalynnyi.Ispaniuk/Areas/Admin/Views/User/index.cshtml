@@ -34,9 +34,8 @@
                         <td class="col-sm-1">@item.Birthday</td>
                         <td class="col-sm-1">@item.Updated</td>
                         <td class="col-sm-1">
-                            <form method="user" asp-action="Delete" asp-route-id="@item.Id" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                            <form method="user" asp-action="Delete" asp-route-param1="@item.Id" onsubmit="return confirm('Are you sure you want to block this user?');">
+                                <button type="submit" class="btn btn-danger">Block</button>
                             </form>
                         </td>
                     </tr>

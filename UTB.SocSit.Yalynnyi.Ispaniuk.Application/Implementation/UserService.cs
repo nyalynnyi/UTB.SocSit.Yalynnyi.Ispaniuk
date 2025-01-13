@@ -5,6 +5,7 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
 using System.Security.Authentication.ExtendedProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
 {
@@ -19,6 +20,12 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
             return _SocSitDbContext.Users.ToList(); ;
         }
 
+        [IgnoreAntiforgeryToken]
+        public bool Block(int id)
+        {
+            return true;
+        }
+        // ERROR
         public bool Delete(int id)
         {
             try

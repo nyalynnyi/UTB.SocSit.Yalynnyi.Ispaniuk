@@ -7,6 +7,7 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Controllers;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Interfaces;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Enums;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Models;
@@ -34,14 +35,14 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Admin.Controllers
             // Check if the user is authenticated
             if (!User.Identity.IsAuthenticated)
             {
-                _logger.LogInformation("User is not authenticated. Redirecting to login page.");
+                Console.WriteLine("User is not authenticated. Redirecting to login page.");
                 return Redirect("/");
             }
 
             // Check if the user has the Admin role
             if (User.IsInRole(nameof(Roles.Admin)))
             {
-                _logger.LogInformation($"Admin user accessed the user management page: {User.Identity.Name}");
+                Console.WriteLine($"Admin user accessed the user management page: {User.Identity.Name}");
 
                 // Fetch all users from the service
                 IList<Infrastructure.Identity.User> users = _userService.SelectAll();
@@ -49,26 +50,24 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Admin.Controllers
             }
 
             // Redirect non-admin users to the feed page
-            _logger.LogWarning($"Access denied for non-admin user: {User.Identity.Name}");
+            Console.WriteLine($"Access denied for non-admin user: {User.Identity.Name}");
             return RedirectToAction(nameof(FeedController.Index), nameof(FeedController).Replace(nameof(Controller), string.Empty));
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Route("Delete/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpGet("Delete/{param1}")]
+        public async Task<IActionResult> Delete(int param1)
         {
-            var user = await _userManager.FindByIdAsync(id.ToString());
+            var user = await _userManager.FindByIdAsync(param1.ToString());
             if (user == null)
             {
                 Console.WriteLine("notfound");
-                return NotFound(); // User not found
+                return NotFound();
             }
 
             var result = await _userManager.DeleteAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction(nameof(Index)); // Redirect to user list
+                return RedirectToAction(nameof(Index));
             }
 
             foreach (var error in result.Errors)
@@ -76,7 +75,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Admin.Controllers
                 ModelState.AddModelError(string.Empty, error.Description);
             }
 
-            return View("Error"); // Return an error view if deletion fails
+            return View("Error");
         }
 
         [HttpGet("Privacy")]

@@ -78,6 +78,33 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Admin.Controllers
             return View("Error");
         }
 
+        [HttpGet("Promote/{param1}")]
+        public async Task<IActionResult> Promote(int param1)
+        {
+            var user = await _userManager.FindByIdAsync(param1.ToString());
+            if (user == null)
+            {
+                Console.WriteLine("notfound");
+                return NotFound();
+            }
+
+            Console.WriteLine("promotion of {0} to admin role", user.UserName);
+            var result = await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
+            if (result.Succeeded)
+            {
+                Console.WriteLine("user {0} is promoted", user.UserName);
+                return RedirectToAction(nameof(Index));
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            Console.WriteLine("user {0} has admin role", user.UserName);
+            return RedirectToAction(nameof(Index));
+        }
+
         [HttpGet("Privacy")]
         public IActionResult Privacy()
         {

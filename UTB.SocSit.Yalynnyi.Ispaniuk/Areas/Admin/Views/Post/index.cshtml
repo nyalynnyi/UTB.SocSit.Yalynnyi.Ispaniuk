@@ -4,6 +4,20 @@
 }
 <h2>@ViewData["Title"]</h2>
 <br />
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th class="col-sm-6">
+                <p><a class="nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">All users</a></p>
+            </th>
+            <th class="col-sm-6">
+                <p><a class="nav-link text-dark" asp-area="Admin" asp-controller="Post" asp-action="Index">All posts</a></p>
+            </th>
+        </tr>
+    </thead>
+</table>
+
 @{
     if (Model != null && Model.Count > 0)
     {

@@ -83,11 +83,6 @@ app.MapControllerRoute(
     pattern: "{area=Security}/{controller=Account}/{action=Login}/{id?}");
 
 app.MapControllerRoute(
-    name: "admin",
-    pattern: "Admin/{controller=Post}/{action=Index}/{id?}",
-    defaults: new { area = "Admin" });
-
-app.MapControllerRoute(
     name: "feed",
     pattern: "{controller=Feed}/{action=Index}/{id?}");
 

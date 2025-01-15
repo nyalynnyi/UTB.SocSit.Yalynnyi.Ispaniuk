@@ -32,7 +32,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
                 Name = vm.Name,
                 Email = vm.Email,
                 PhoneNumber = vm.Phone,
-                Created = DateTime.Now
+                Created = DateTime.Now,
+                Photo = "~/img/photos/default.png",
             };
             string[] errors = null;
             var result = await userManager.CreateAsync(user, vm.Password);

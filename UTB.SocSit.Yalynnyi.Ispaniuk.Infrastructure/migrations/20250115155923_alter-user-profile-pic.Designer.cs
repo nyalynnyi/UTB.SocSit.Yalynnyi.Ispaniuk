@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Migrations
 {
     [DbContext(typeof(SocSitDbContext))]
-    partial class SocSitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250115155923_alter-user-profile-pic")]
+    partial class alteruserprofilepic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

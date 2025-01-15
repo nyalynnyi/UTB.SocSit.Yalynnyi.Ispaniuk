@@ -12,7 +12,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
                 Id = 1,
                 Email = "orpha_terry@example.com",
                 UserName = "orpha_terry",
-                Photo = "/img/user/default.jpg",
+                Photo = "~/img/photos/default.png",
                 Name = "Orpha Terry"
             });
             users.Add(new User()
@@ -20,7 +20,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
                 Id = 2,
                 Email = "marta.berge47@example.com",
                 UserName = "marta_berge",
-                Photo = "/img/user/default.jpg",
+                Photo = "~/img/photos/default.png",
                 Name = "Marta Berge"
             });
             users.Add(new User()
@@ -28,7 +28,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
                 Id = 3,
                 Email = "jamir_kshlerin@example.com",
                 UserName = "j_kshlerin",
-                Photo = "/img/user/default.jpg",
+                Photo = "~/img/photos/default.png",
                 Name = "Jamir Kshlerin"
             });
             users.Add(new User()
@@ -36,7 +36,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
                 Id = 4,
                 Email = "rico_spinka66@example.com",
                 UserName = "rico_spinka",
-                Photo = "/img/user/default.jpg",
+                Photo = "~/img/photos/default.png",
                 Name = "Rico Spinka"
             });
             users.Add(new User()
@@ -44,7 +44,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
                 Id = 5,
                 Email = "ottilie.emmerich43@example.com",
                 UserName = "emmerich43",
-                Photo = "/img/user/default.jpg",
+                Photo = "~/img/photos/default.png",
                 Name = "Ottilie Emmerich"
             });
             return users;

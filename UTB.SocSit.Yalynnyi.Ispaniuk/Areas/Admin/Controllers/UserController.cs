@@ -1,14 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using System.Diagnostics;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Controllers;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities.Interfaces;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Enums;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Models;
 
@@ -54,6 +48,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Admin.Controllers
             return RedirectToAction(nameof(FeedController.Index), nameof(FeedController).Replace(nameof(Controller), string.Empty));
         }
 
+        [HttpPost]
         [HttpGet("Delete/{param1}")]
         public async Task<IActionResult> Delete(int param1)
         {

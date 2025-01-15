@@ -3,9 +3,7 @@ using System.Diagnostics;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Models;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
-using Microsoft.AspNetCore.Identity;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Controllers;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Enums;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Admin.Controllers
@@ -45,7 +43,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Areas.Admin.Controllers
             return RedirectToAction(nameof(FeedController.Index), nameof(FeedController).Replace(nameof(Controller), string.Empty));
         }
 
-    [HttpPost("Delete/{id}")]
+        [HttpPost("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             bool deleted = _postService.Delete(id);

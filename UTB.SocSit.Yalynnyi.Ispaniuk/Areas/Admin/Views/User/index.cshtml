@@ -2,17 +2,24 @@
 @{
     ViewData["Title"] = "All Users";
 }
+<link rel="stylesheet" href="~/css/profile.css" />
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
 <h2>@ViewData["Title"]</h2>
 <br />
 
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th class="col-sm-6">
+            <th class="col-sm-3">
                 <p><a class="nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">All users</a></p>
             </th>
-            <th class="col-sm-6">
+            <th class="col-sm-3">
                 <p><a class="nav-link text-dark" asp-area="Admin" asp-controller="Post" asp-action="Index">All posts</a></p>
+            </th>
+            <th class="col-sm-3">
+                <p><a class="nav-link text-dark" asp-controller="Feed" asp-action="Index">Feed</a></p>
             </th>
         </tr>
     </thead>
@@ -27,8 +34,8 @@
                 <thead>
                     <tr>
                         <th class="col-sm-1">ID</th>
-                        <th class="col-sm-1">Email</th>
                         <th class="col-sm-1">Name</th>
+                        <th class="col-sm-1">Email</th>
                         <th class="col-sm-2">Username</th>
                         <th class="col-sm-1">Photo</th>
                         <th class="col-sm-3">Bio</th>
@@ -43,13 +50,13 @@
                         <td class="col-sm-1">@item.Name</td>
                         <td class="col-sm-1">@item.Email</td>
                         <td class="col-sm-2">@item.UserName</td>
-                        <td class="col-sm-1">@item.Photo</td>
+                        <td class="col-sm-1"><img src="@item.Photo" alt="User Photo" class="img-thumbnail" /></td>
                         <td class="col-sm-3">@item.Bio</td>
                         <td class="col-sm-1">@item.Birthday</td>
                         <td class="col-sm-1">@item.Updated</td>
                         <td class="col-sm-1">
                             <form method="user" asp-action="Delete" asp-route-param1="@item.Id" onsubmit="return confirm('Are you sure you want to block this user?');">
-                                <button type="submit" class="btn btn-danger">Block</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                             <form method="user" asp-action="Promote" asp-route-param1="@item.Id" onsubmit="return confirm('Are you sure you want to promote this user to admin?');">
                                 <button type="submit" class="btn btn-primary">Promote</button>

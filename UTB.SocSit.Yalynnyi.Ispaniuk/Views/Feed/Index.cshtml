@@ -1,8 +1,9 @@
-﻿@{
+﻿@model PostViewModel
+@{
 ViewData["Title"] = "Feed";
 }
 @{
-    bool admin = ViewBag.Admin ?? false;
+    bool admin = Model.Admin;
 }
 <link rel="stylesheet" href="~/css/intro.css" />
 <head>
@@ -58,6 +59,7 @@ ViewData["Title"] = "Feed";
                         <i class="bi bi-plus-square"></i> New post
                     </a>
                 </li>
+                <!-- Для створення нового посту (New post modal) -->
                 <div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -66,15 +68,22 @@ ViewData["Title"] = "Feed";
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" enctype="multipart/form-data">
+                                <form asp-action="Create" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label for="postText" class="form-label">Post Text</label>
-                                        <textarea class="form-control" id="postText" name="postText" rows="3" placeholder="Write something..."></textarea>
+                                        <textarea asp-for="Text" class="form-control" rows="3" placeholder="Write something..."></textarea>
                                     </div>
+
                                     <div class="mb-3">
                                         <label for="postImage" class="form-label">Upload Image</label>
-                                        <input class="form-control" type="file" id="postImage" name="postImage" accept="image/*">
+                                        <input asp-for="Image" class="form-control" type="file" asp-for="Link">
+                                        <span asp-validation-for="Image" class="text-danger"></span>
                                     </div>
+@*                                     <div class="mb-3">
+                                        <label class="form-label" asp-for="ost.Image">Image</label>
+                                        <input class="form-control-file" asp-for="Image">
+                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                    </div> *@
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -92,7 +101,7 @@ ViewData["Title"] = "Feed";
                         <i class="bi bi-box-arrow-right"></i> Log out
                     </a>
                 </li>
-                @if (User.Identity.IsAuthenticated == true && ViewBag.Admin)
+                @if (User.Identity.IsAuthenticated == true && admin)
                 {
                     <li class="nav-item mt-4">
                         <a class="nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">All users</a>
@@ -136,7 +145,7 @@ ViewData["Title"] = "Feed";
                                             {
                                                 <!-- Placeholder для фото -->
                                                 <div class="d-flex justify-content-left align-items-left" style="height: 500px;">
-                                                    <img src=@media.Link alt="post" style="height: 500px" />
+                                                    <img src="@media.Link" alt="post" style="height: 500px" />
                                                 </div>
                                             }
                                         }

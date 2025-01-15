@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
 using IdentUser = UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.Enums;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Models;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Application.ViewModels;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
 {
@@ -58,28 +58,67 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
                 List<IdentUser> follows = new List<IdentUser> { };
                 follows = _userService.FindFriends(user.Id);
 
-                ViewBag.Posts = posts;
-                ViewBag.CommentsList = commentsList;
-                ViewBag.UsersList = usersList;
-                ViewBag.MediaList = mediaList;
-                ViewBag.Names = names;
-                ViewBag.Follows = follows;
+                //ViewBag.Posts = posts;
+                //ViewBag.CommentsList = commentsList;
+                //ViewBag.UsersList = usersList;
+                //ViewBag.MediaList = mediaList;
+                //ViewBag.Names = names;
+                //ViewBag.Follows = follows;
 
                 bool admin;
                 if (User.IsInRole(nameof(Roles.Admin)))
                 {
                     admin = true;
-                    ViewBag.Admin = admin;
-                    return View(ViewBag);
+                    var vm = new PostViewModel
+                    {
+                        Posts = posts,
+                        Admin = admin,
+                    CommentsList = commentsList,
+                        UsersList = usersList,
+                        MediaList = mediaList,
+                        Names = names,
+                        Follows = follows,
+                    };
+                    //ViewBag.Admin = admin;
+                    //return View(ViewBag);
+                    return View(vm);
                 }
                 else
                 {
                     admin = false;
-                    ViewBag.Admin = admin;
-                    return View(ViewBag);
+                    var vm = new PostViewModel
+                    {
+                        Posts = posts,
+                        Admin = admin,
+                    CommentsList = commentsList,
+                        UsersList = usersList,
+                        MediaList = mediaList,
+                        Names = names,
+                        Follows = follows,
+                    };
+                    //ViewBag.Admin = admin;
+                    return View(vm);
                 }
             }
             else return Redirect("/");
+        }
+
+        public IActionResult Create(PostViewModel pvm)
+        {
+            Console.WriteLine("Creating new post...");
+            if (ModelState.IsValid)
+            {
+                IdentUser user = _userService.FindByName(User.Identity.Name);
+                Post newPost = new Post
+                {
+                    Text = pvm.Text,
+                    UserID = user.Id,
+                    Created = new DateTime()
+                };
+                _postService.Create(newPost);
+                return Redirect("/");
+            }
+            return Redirect("/");
         }
 
         public IActionResult Privacy()

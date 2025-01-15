@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Validations;
+
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
 {
@@ -12,9 +10,13 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
     {
         [ForeignKey(nameof(Post))]
         public required int PostID { get; set; }
-
+        [NotMapped]
         public required string Link {  get; set; }
         private DateTime Created { get; set; }
         public DateTime? Deleted { get; set; }
+
+        [NotMapped]
+        [FileContent("image")]
+        public IFormFile? Image { get; set; }
     }
 }

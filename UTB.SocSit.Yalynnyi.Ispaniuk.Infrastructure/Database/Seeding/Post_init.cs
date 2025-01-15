@@ -17,8 +17,9 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database.Seeding
                 posts.Add(new Post()
                 {
                     ID = i,
-                    UserID = (i % 5) + 1,
-                    Text = $"This is post number {i} on this network. Enjoy reading!"
+                    UserID = 14,
+                    Text = $"This is post number {i} on this network. Enjoy reading!",
+                    Created = DateTime.Now
                 });
             }
             return posts;

@@ -14,7 +14,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities
         [ForeignKey(nameof(User))]
         public required int UserID { get; set; }
         public required string Text { get; set; }
-        private DateTime Created { get; set; }
+        public DateTime Created { get; set; }
         public DateTime? Deleted { get; set; }
     }
 }

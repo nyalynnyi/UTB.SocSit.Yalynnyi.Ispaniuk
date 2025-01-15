@@ -5,6 +5,8 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction
     public interface IUserService
     {
         IList<User> SelectAll();
+        User FindByName(string name);
+        User FindById(int id);
         bool Delete(int id);
         bool Update(int id, User user);
     }

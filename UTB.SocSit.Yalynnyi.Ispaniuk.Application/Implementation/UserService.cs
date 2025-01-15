@@ -16,16 +16,19 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
 
         public IList<User> SelectAll()
         {
-            
             return _SocSitDbContext.Users.ToList(); ;
         }
 
-        [IgnoreAntiforgeryToken]
-        public bool Block(int id)
+        public User FindByName(string name)
         {
-            return true;
+            return _SocSitDbContext.Users.FirstOrDefault(u => u.UserName == name);
         }
-        // ERROR
+
+        public User FindById(int id)
+        {
+            return _SocSitDbContext.Users.FirstOrDefault(u => u.Id == id);
+        }
+
         public bool Delete(int id)
         {
             try

@@ -1,3 +1,5 @@
+@using UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
+@model CompositeModel
 @{
 ViewData["Title"] = "Profile";
 }
@@ -68,38 +70,71 @@ ViewData["Title"] = "Profile";
             <div class="d-flex align-items-center mb-4">
                 <img src="https://via.placeholder.com/100" class="rounded-circle me-3" alt="Profile Picture" />
                 <div>
-                    <h3 class="mb-0">Gordon Moore</h3>
-                    <p class="text-muted">Male, He/Him</p>
-                    <p class="text-muted">3/1/1929</p>
-                </div>
-            </div>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis euismod libero. Aliquam erat volutpat. Cras a consequat ex. Curabitur diam ante, efficitur a nisi sed, vulputate ultrices metus. Nam in justo ut mauris condimentum imperdiet vel quis nisl. Nullam et finibus turpis. Morbi nisi felis, euismod ut libero a, luctus laoreet mi.</p>
-
-            <!-- Placeholder для фото -->
-            <div class="bg-secondary text-white d-flex justify-content-center align-items-center" style="height: 300px;">
-                Image
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center mt-2">
-                <!-- Лівий блок (Like і Comment) -->
-                <div class="d-flex gap-3">
-                    <button class="btn btn-light border d-flex align-items-center">
-                        <i class="bi bi-hand-thumbs-up me-1"></i> Like
-                    </button>
-                    <button class="btn btn-light border d-flex align-items-center">
-                        <i class="bi bi-chat me-1"></i> Comment
+                    <h3 class="mb-0">@Model.User.Name</h3>
+                    <p class="text-muted">@Model.User.UserName</p>
+                    <p class="text-muted">@($"{@Model.User.Birthday:dd-MM-yyyy}")</p>
+                    <button class="btn-sm btn-light border p-2 d-flex align-items-center">
+                        Edit profile
                     </button>
                 </div>
-
-                <!-- Save кнопка -->
-                <button class="btn btn-light border d-flex align-items-center">
-                    <i class="bi bi-bookmark me-1"></i> Save
-                </button>
             </div>
 
-            <p class="mt-3"><strong>Pablo Picasso:</strong> I paint objects as I think them, not as I see them.</p>
-            <p class="text-muted">Henri Matisse: Bold as always, Picasso. Form bends to your will, but don’t forget — color speaks too.</p>
+            <p>@Model.User.Bio</p>
+            @{
+                if (Model.Posts != null && Model.Posts.Count > 0)
+                {
+                    foreach (var item in Model.Posts)
+                    {
+                    <div>
+                        <!-- Placeholder для фото -->
+                        <div class="bg-secondary text-white d-flex justify-content-center align-items-center" style="height: 300px;">
+                            Image
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <!-- Лівий блок (Like і Comment) -->
+                            <div class="d-flex gap-3">
+                                <button class="btn btn-light border d-flex align-items-center">
+                                    <i class="bi bi-hand-thumbs-up me-1"></i> Like
+                                </button>
+                                <button class="btn btn-light border d-flex align-items-center">
+                                    <i class="bi bi-chat me-1"></i> Comment
+                                </button>
+                            </div>
+
+                            <!-- Save кнопка -->
+                            <button class="btn btn-light border d-flex align-items-center">
+                                <i class="bi bi-bookmark me-1"></i> Save
+                            </button>
+                        </div>
+
+                        <!-- Post -->
+                        <p class="mt-3"><strong>@Model.User.Name: </strong>@item.Text</p>
+                        <p class="text-muted">@item.Created</p>
+
+                        <!-- Comments -->
+                        @{
+                            if (Model.CommentList != null && Model.CommentList.Count > 0)
+                            {
+                                foreach (var list in Model.CommentList)
+                                {
+                                    foreach (var comment in list)
+                                    {
+                                        foreach (var user in Model.UsersList)
+                                        {
+                                            if (@comment.PostID == item.ID && @user.Id == comment.UserID)
+                                            {
+                                                <p class="text-muted">@user.Name: @comment.Text</p>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    </div>
+                    }
+                }
+            }
         </div>
     </div>
 </div>

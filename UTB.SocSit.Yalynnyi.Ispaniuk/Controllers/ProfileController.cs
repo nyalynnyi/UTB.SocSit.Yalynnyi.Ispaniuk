@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
@@ -42,6 +41,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
             }
 
             IList<Post> posts = _postService.Select(user.Id);
+            posts = posts.OrderByDescending(p => p.Created).ToList();
             List<IList<Comment>> commentsList = new List<IList<Comment>>();
             List<Infrastructure.Identity.User> usersList = new List<Infrastructure.Identity.User>();
             for (int i = 0; i < posts.Count; i++)

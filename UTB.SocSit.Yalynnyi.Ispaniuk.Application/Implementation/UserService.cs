@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction;
 using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Database;
-using UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity;
+using IdentUser = UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity.User;
 using System.Security.Authentication.ExtendedProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using UTB.SocSit.Yalynnyi.Ispaniuk.Domain.Entities;
 
 namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
 {
@@ -14,26 +15,41 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
         SocSitDbContext _SocSitDbContext = socsitDbContext;
         private readonly SecurityIdentityService _securityService;
 
-        public IList<User> SelectAll()
+        public IList<IdentUser> SelectAll()
         {
             return _SocSitDbContext.Users.ToList(); ;
         }
 
-        public User FindByName(string name)
+        public IdentUser FindByName(string name)
         {
             return _SocSitDbContext.Users.FirstOrDefault(u => u.UserName == name);
         }
 
-        public User FindById(int id)
+        public IdentUser FindById(int id)
         {
             return _SocSitDbContext.Users.FirstOrDefault(u => u.Id == id);
+        }
+
+        public List<IdentUser> FindFriends(int id)
+        {
+            List<IdentUser> friends = new List<IdentUser> { };
+            var fol = _SocSitDbContext.Follows.Where(f => f.UserID == id).ToList();
+            if(fol != null)
+            {
+                List<Follow> follows = fol;
+                foreach (Follow follow in follows)
+                {
+                    friends.Add(FindById(follow.FollowerID));
+                }
+            }
+            return friends;
         }
 
         public bool Delete(int id)
         {
             try
             {
-                User userToDelete = _SocSitDbContext.Users.Find(id);
+                IdentUser userToDelete = _SocSitDbContext.Users.Find(id);
                 if (userToDelete != null)
                 {
                     var posts = _SocSitDbContext.Posts.Where(p => p.UserID == id).ToList();
@@ -56,11 +72,11 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
             }
         }
 
-        public bool Update(int id, User user)
+        public bool Update(int id, IdentUser user)
         {
             try
             {
-                User userToEdit = _SocSitDbContext.Users.Find(id);
+                IdentUser userToEdit = _SocSitDbContext.Users.Find(id);
                 if (userToEdit != null)
                 {
                     userToEdit = user;

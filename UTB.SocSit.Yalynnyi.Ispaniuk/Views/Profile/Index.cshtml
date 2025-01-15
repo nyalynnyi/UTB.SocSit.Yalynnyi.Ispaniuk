@@ -12,7 +12,7 @@ ViewData["Title"] = "Profile";
 <div class="w-100 bg-dark text-white py-2 px-4">
     <div class="d-flex justify-content-between align-items-center w-100">
         <!-- Логотип-кнопка -->
-        <a href="#" class="d-inline-block">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Feed" asp-action="Index">
             <img src="~/img/network.png" alt="Logo" class="logo-btn" />
         </a>
 
@@ -52,8 +52,36 @@ ViewData["Title"] = "Profile";
                     <a href="#" class="nav-link text-dark"><i class="bi bi-camera-video"></i> My videos</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-dark"><i class="bi bi-plus-square"></i> New post</a>
+                    <a href="#" class="nav-link text-dark" data-bs-toggle="modal" data-bs-target="#newPostModal">
+                        <i class="bi bi-plus-square"></i> New post
+                    </a>
                 </li>
+                <div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newPostModalLabel">Create New Post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="postText" class="form-label">Post Text</label>
+                                        <textarea class="form-control" id="postText" name="postText" rows="3" placeholder="Write something..."></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="postImage" class="form-label">Upload Image</label>
+                                        <input class="form-control" type="file" id="postImage" name="postImage" accept="image/*">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <li class="nav-item mt-4">
                     <a href="#" class="nav-link text-dark"><i class="bi bi-gear"></i> Settings</a>
                 </li>
@@ -68,7 +96,7 @@ ViewData["Title"] = "Profile";
         <!-- Головна частина: Профіль -->
         <div class="col-md-10 py-4">
             <div class="d-flex align-items-center mb-4">
-                <img src="~/img/photos/default.png" class="rounded-circle me-3" alt="Profile Picture" style="width: 150px" />
+                <img src=@Model.User.Photo class="rounded-circle me-3" alt="Profile Picture" style="width: 150px" />
                 <div>
                     <h3 class="mb-0">@Model.User.Name</h3>
                     <p class="text-muted">@Model.User.UserName</p>
@@ -81,60 +109,70 @@ ViewData["Title"] = "Profile";
 
             <p>@Model.User.Bio</p>
             <p class="h4">All posts:</p>
-            @{
-                if (Model.Posts != null && Model.Posts.Count > 0)
+
+            @if (Model.Posts != null && Model.Posts.Count > 0)
+            {
+                foreach (var item in Model.Posts)
                 {
-                    foreach (var item in Model.Posts)
+                    <div style="margin-bottom: 3%">
+                    @if (Model.MediaList != null && Model.MediaList.Count > 0)
                     {
-                    <div>
-                        <!-- Placeholder для фото -->
-                        <div class="d-flex justify-content-left align-items-left" style="height: 300px;">
-                            <img src="~/img/media/defualt.jpg" alt="post" style="height: 300px"/>
-                        </div>
+                        foreach (var list in Model.MediaList)
+                        {
+                            foreach (var media in list)
+                            {
+                                if (media.PostID == item.ID)
+                                {
+                                    <!-- Placeholder для фото -->
+                                    <div class="d-flex justify-content-left align-items-left" style="height: 500px;">
+                                        <img src=@media.Link alt="post" style="height: 500px" />
+                                    </div>
+                                }
+                            }
+                        }
+                    }
 
-                        <div class="d-flex justify-content-between align-items-center mt-2">
-                            <!-- Лівий блок (Like і Comment) -->
-                            <div class="d-flex gap-3">
-                                <button class="btn btn-light border d-flex align-items-center">
-                                    <i class="bi bi-hand-thumbs-up me-1"></i> Like
-                                </button>
-                                <button class="btn btn-light border d-flex align-items-center">
-                                    <i class="bi bi-chat me-1"></i> Comment
-                                </button>
-                            </div>
+                    <!-- Post -->
+                    <p class="mt-3"><strong>@Model.User.Name: </strong>@item.Text</p>
+                    <p class="text-muted">@($"{@item.Created:dd-MM-yyyy, HH:mm}")</p>
 
-                            <!-- Save кнопка -->
+                        <div class="d-flex justify-content-between align-items-center mt-2 mb-2">
+                        <!-- Лівий блок (Like і Comment) -->
+                        <div class="d-flex gap-3">
                             <button class="btn btn-light border d-flex align-items-center">
-                                <i class="bi bi-bookmark me-1"></i> Save
+                                <i class="bi bi-hand-thumbs-up me-1"></i> Like
+                            </button>
+                            <button class="btn btn-light border d-flex align-items-center">
+                                <i class="bi bi-chat me-1"></i> Comment
                             </button>
                         </div>
 
-                        <!-- Post -->
-                        <p class="mt-3"><strong>@Model.User.Name: </strong>@item.Text</p>
-                        <p class="text-muted">@($"{@item.Created:dd-MM-yyyy, HH:mm}")</p>
+                        <!-- Save кнопка -->
+                        <button class="btn btn-light border d-flex align-items-center">
+                            <i class="bi bi-bookmark me-1"></i> Save
+                        </button>
+                    </div>
 
-                        <!-- Comments -->
-                        @{
-                            if (Model.CommentList != null && Model.CommentList.Count > 0)
+                    <!-- Comments -->
+                    @if (Model.CommentList != null && Model.CommentList.Count > 0)
+                    {
+                        foreach (var list in Model.CommentList)
+                        {
+                            foreach (var comment in list)
                             {
-                                foreach (var list in Model.CommentList)
+                                foreach (var user in Model.UsersList)
                                 {
-                                    foreach (var comment in list)
+                                    if (@comment.PostID == item.ID && @user.Id == comment.UserID)
                                     {
-                                        foreach (var user in Model.UsersList)
-                                        {
-                                            if (@comment.PostID == item.ID && @user.Id == comment.UserID)
-                                            {
-                                                <p class="text-muted">@user.Name: @comment.Text</p>
-                                            }
-                                        }
+                                        <p class="text-muted">@user.Name: @comment.Text</p>
                                     }
                                 }
                             }
                         }
-                    </div>
                     }
+                    </div>
                 }
+                
             }
         </div>
     </div>

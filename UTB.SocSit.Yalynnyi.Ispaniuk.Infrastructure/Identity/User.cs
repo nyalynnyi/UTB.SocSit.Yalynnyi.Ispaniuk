@@ -9,7 +9,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Infrastructure.Identity
         public override string? UserName { get; set; }
         public virtual string? Name { get; set; }
         public virtual string? Bio { get; set; }
-        public string? Photo { get; set; }
+        public virtual string? Photo { get; set; }
         public DateTime? Updated { get; set; }
         public DateTime? Deleted { get; set; }
         public virtual DateTime? Birthday { get; set; }

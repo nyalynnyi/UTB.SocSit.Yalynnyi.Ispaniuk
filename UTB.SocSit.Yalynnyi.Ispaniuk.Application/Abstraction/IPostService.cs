@@ -7,6 +7,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Abstraction
         IList<Post> Select(int userId);
         IList<Post> SelectAll();
         IList<Comment> GetComments(int postId);
+        IList<Media> GetMedia(int postId);
         void Create(Post order);
         bool Delete(int id);
     }

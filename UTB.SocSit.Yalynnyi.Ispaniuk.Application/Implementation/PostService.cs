@@ -23,6 +23,11 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
             return _SocSitDbContext.Comments.Where(c => c.PostID == postId).ToList();
         }
 
+        public IList<Media> GetMedia(int postId)
+        {
+            return _SocSitDbContext.Media.Where(m => m.PostID == postId).ToList();
+        }
+
         public void Create(Post post)
         {
             try

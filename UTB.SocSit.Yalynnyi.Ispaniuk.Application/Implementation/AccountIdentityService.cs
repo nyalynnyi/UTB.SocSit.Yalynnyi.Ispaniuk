@@ -33,7 +33,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Application.Implementation
                 Email = vm.Email,
                 PhoneNumber = vm.Phone,
                 Created = DateTime.Now,
-                Photo = "~/img/photos/default.png",
+                Photo = "/img/photos/default.png",
             };
             string[] errors = null;
             var result = await userManager.CreateAsync(user, vm.Password);

@@ -73,7 +73,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
                     {
                         Posts = posts,
                         Admin = admin,
-                    CommentsList = commentsList,
+                        CommentsList = commentsList,
                         UsersList = usersList,
                         MediaList = mediaList,
                         Names = names,
@@ -90,7 +90,7 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
                     {
                         Posts = posts,
                         Admin = admin,
-                    CommentsList = commentsList,
+                        CommentsList = commentsList,
                         UsersList = usersList,
                         MediaList = mediaList,
                         Names = names,
@@ -103,22 +103,19 @@ namespace UTB.SocSit.Yalynnyi.Ispaniuk.Controllers
             else return Redirect("/");
         }
 
+        [Route("Post/Create")]
         public IActionResult Create(PostViewModel pvm)
         {
             Console.WriteLine("Creating new post...");
-            if (ModelState.IsValid)
+            IdentUser user = _userService.FindByName(User.Identity.Name);
+            Post newPost = new Post
             {
-                IdentUser user = _userService.FindByName(User.Identity.Name);
-                Post newPost = new Post
-                {
-                    Text = pvm.Text,
-                    UserID = user.Id,
-                    Created = new DateTime()
-                };
-                _postService.Create(newPost);
-                return Redirect("/");
-            }
-            return Redirect("/");
+                Text = pvm.Text,
+                UserID = user.Id,
+                Created = DateTime.Now
+            };
+            _postService.Create(newPost);
+            return RedirectToAction(nameof(FeedController.Index), nameof(FeedController).Replace(nameof(Controller), string.Empty));
         }
 
         public IActionResult Privacy()
